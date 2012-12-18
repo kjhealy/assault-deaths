@@ -365,3 +365,18 @@ p + geom_point(size=0.8) + geom_smooth(method="loess", aes(fill = US.Mex.Est)) +
                             labels=c("Mexico", "Estonia", "United States", "Other OECD"))
 credit()
 dev.off()
+
+
+png(file="figures/assault-deaths-oecd-ts-facet-2.png", height=2100, width=1100,
+    res=100, pointsize=9)
+p <- ggplot(data.m.all, aes(Year, Deaths, group=Country))
+p + geom_point() + geom_smooth(method="loess") + labs(y = "Assault Deaths per 100k") + facet_wrap(~ Country, ncol=5) + theme_bw()
+credit()
+dev.off()
+
+pdf(file="figures/assault-deaths-oecd-ts-facet-2.pdf", width=14,
+    height=22, pointsize=9)
+p <- ggplot(data.m.all, aes(Year, Deaths, group=Country))
+p + geom_point() + geom_smooth(method="loess") + labs(y = "Assault Deaths per 100k") + facet_wrap(~ Country, ncol=5) + theme_bw()
+credit()
+dev.off()
